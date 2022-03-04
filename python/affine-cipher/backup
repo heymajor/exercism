@@ -1,0 +1,58 @@
+import re
+
+def clean(text):
+    text = re.sub(r'[^a-zA-Z]', '', text)
+    return text
+
+def is_coprime(a):    
+    m = 26
+    hcf = 1
+    for i in range(1, a+1):
+        if a%i==0 and m%i==0:
+            hcf = i
+    return hcf == 1
+
+def encode(plain_text, a, b):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = list(alphabet)
+    encoded = []
+    m = 26
+    if is_coprime(a):
+        plain_text = clean(plain_text)
+        plain_list = list(plain_text)
+        for letter in plain_list:
+            euclidX = ((a * alphabet.index(letter) + b) % m)
+            encoded.append(alphabet[euclidX])            
+        encoded = "".join(encoded)
+        encoded = [encoded[i:i+5] for i in range(0, len(encoded), 5)]
+        return " ".join(encoded)
+    else:
+        raise ValueError("a and m must be coprime.")
+    
+def decode(ciphered_text, a, b):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = list(alphabet)
+    decoded = []
+    m = 26
+    if is_coprime(a):
+        ciphered_text = clean(ciphered_text)
+        ciphered_list = list(ciphered_text)
+        for cipher in ciphered_list:
+            print(alphabet.index(cipher))
+            euclidY = ((alphabet.index(cipher) - b) * (a ** -1)) % m
+            # euclidY = (alphabet.index(cipher) - b) % m / a
+            # print(euclidY)
+            decoded.append(alphabet[int(euclidY)])
+        return "".join(decoded)
+    else: raise ValueError("a and m must be coprime.")
+
+
+
+# def main():
+#     # print(encode("yes", 5, 7)) # xbt
+#     # print(decode("qdwju nqcro muwhn odqun oppmd aunwd o", 19, 16)) # anobstacleisoftenasteppingstone
+#     print(decode("odpoz ub123 odpoz ub", 25, 7)) # testing123testing
+#     # print(encode("mindblowingly", 11, 15)) # rzcwa gnxzc dgt
+
+# if __name__ == '__main__':
+#     main()
