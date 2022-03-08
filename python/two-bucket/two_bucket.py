@@ -98,11 +98,11 @@ def measure(bucket_one, bucket_two, goal, b_start):
 
 def main():
     # print(measure(3,5,1,"one")) #(4, "one", 5)
-    # print(measure(3, 5, 1, "two")) #(8, "two", 3)
+    print(measure(3, 5, 1, "two")) #(8, "two", 3) TODO
     # print(measure(7, 11, 2, "one")) #(14, "one", 11)
     # print(measure(7, 11, 2, "two")) #(18, "two", 7) TODO
     # print(measure(6, 15, 5, "one")) #Raise ValueError
-    print(measure(6, 15, 9, "one")) #(10, "two", 0)
+    # print(measure(6, 15, 9, "one")) #(10, "two", 0)
 
 if __name__ == '__main__':
     main()
