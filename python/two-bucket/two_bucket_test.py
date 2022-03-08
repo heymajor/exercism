@@ -13,6 +13,7 @@ class TwoBucketTest(unittest.TestCase):
     ):
         self.assertEqual(measure(3, 5, 1, "one"), (4, "one", 5))
 
+    #TODO
     def test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_two(
         self,
     ):
@@ -28,11 +29,13 @@ class TwoBucketTest(unittest.TestCase):
     ):
         self.assertEqual(measure(7, 11, 2, "two"), (18, "two", 7))
 
+    #TODO
     def test_measure_one_step_using_bucket_one_of_size_1_and_bucket_two_of_size_3_start_with_bucket_two(
         self,
     ):
         self.assertEqual(measure(1, 3, 3, "two"), (1, "two", 0))
 
+    #TODO
     def test_measure_using_bucket_one_of_size_2_and_bucket_two_of_size_3_start_with_bucket_one_and_end_with_bucket_two(
         self,
     ):
@@ -42,6 +45,7 @@ class TwoBucketTest(unittest.TestCase):
         with self.assertRaisesWithMessage(ValueError):
             measure(6, 15, 5, "one")
 
+    ##TODO
     def test_with_the_same_buckets_but_a_different_goal_then_it_is_possible(self):
         self.assertEqual(measure(6, 15, 9, "one"), (10, "two", 0))
 
